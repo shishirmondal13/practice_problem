@@ -19,7 +19,7 @@ void title()       //prints title of the program
     cout << "\t\t\t ";
     setcolorandbackground(15,0);
     cout << "\t Welcome  to  Hand  Cricket!!"<<endl<<endl<<endl;
-    setcolorandbackground(9,0);  //Green color
+    setcolorandbackground(9,0);
     cout << "\t\t\t|******************************************|\n" << endl;
 
 
@@ -34,6 +34,7 @@ void mainmenu() //Function for printing Main menu options
     setcolorandbackground(9,0);
     cout << "\n\n\t\t\t\t1.Start a new game" << endl;
     cout << "\n\t\t\t\t2.Instructions" << endl;
+    cout << "\n\t\t\t\t3.About Us" << endl;
     cout << "\n\t\t\t\tPress any other key to exit the game" << endl;
     cout << "\n\t\t\t\tEnter your Choice: ";
     setcolorandbackground(15,0);
@@ -53,6 +54,27 @@ void instructions()
     cout <<"\n\t4. If your choice and your opponents choice are same, then the person who is batting is considered as OUT."<<endl;
     cout <<"\n\t5. One who scores more during their batting is declared as WINNER."<<endl;
     cout <<"\n\t6. If both scores same, then the result will be 'DRAW'."<<endl;
+    setcolorandbackground(15,0);
+    cout << "\n\n\t\tPress '0' to go back to main menu....: ";
+    setcolorandbackground(15,0);
+}
+
+void about_us()
+{
+    title();
+    cout <<"\n";
+    setcolorandbackground(9,15);
+    cout << "\t\t\t\tGroup Name : BUBT_battle-buddies\n\n";
+    setcolorandbackground(15,0);
+    cout << "\n\tTeam Members Name     --------------------------      Member's Title ";
+    setcolorandbackground(3,0);
+    cout << "\n";
+    cout << "\n\t1.Sudipto Mandal    ----------------------------     Game Producer"<<endl;
+    cout << "\n\t2.Amina Islam Katha   -----------------------------  Narrative Writer"<<endl;
+    cout << "\n\t3.Shishir Mondal     ------------------------------  Game Designer and coder"<<endl;
+    cout << "\n\t4.Mehedi Hasan Ratul  ---------------------------    Idea manager and editor"<<endl;
+    cout << "\n\t5.Md Arif Hossain      ---------------------------   Game Tester"<<endl;
+
     setcolorandbackground(15,0);
     cout << "\n\n\t\tPress '0' to go back to main menu....: ";
     setcolorandbackground(15,0);
@@ -383,6 +405,7 @@ int main()
         }
         else if(choice=='2')
         {
+
             instructions();
             char ch;
             cin >> ch;
@@ -395,6 +418,23 @@ int main()
             }
             continue;
         }
+
+        else if(choice=='3')
+        {
+
+            about_us();
+            char ch;
+            cin >> ch;
+            while(ch!='0')
+            {
+                setcolorandbackground(4,0);
+                cout << "\t\tPlease press '0' to go back to main menu....:  ";
+                setcolorandbackground(15,0);
+                cin >> ch;
+            }
+            continue;
+        }
+
         else    break;
     }
     return 0;
