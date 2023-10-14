@@ -168,9 +168,9 @@ void start_game(string player_name)
             balls = 12;
             break;
         }
-        else if(overs==5)
+        else if(overs==3)
         {
-            balls = 30;
+            balls = 18;
             break;
         }
         else
@@ -312,10 +312,10 @@ void start_game(string player_name)
         setcolorandbackground(10,0);
         cout <<"\n\tYour Score is "<< second <<endl;
         setcolorandbackground(9,0);
-        cout <<"=============================================================================================================";
+        cout <<"####################################################################################################################";
         setcolorandbackground(6,0);
         cout << "\n\n\t\t\t\t\t";
-        setcolorandbackground(14,13);
+        setcolorandbackground(1,15);
         cout << "RESULT";
         if(first>second)
         {
@@ -332,8 +332,8 @@ void start_game(string player_name)
         else
         {
             setcolorandbackground(10,0);
-            cout << "\n\n\t\t\t\t"<<player_name<<"Hurray You Won the Match!!";
-            cout << "\n\n\t\t\t\t"<<player_name<<" Your Guessing power is good!!";
+            cout << "\n\n\t\t\t\t"<<player_name<<", Hurray!! You Won the Match!!";
+            cout << "\n\n\t\t\t\t"<<player_name<<", Your Guessing power is good!!";
         }
     }
     else
@@ -343,11 +343,11 @@ void start_game(string player_name)
         setcolorandbackground(10,0);
         cout <<"\tYour Opponent's Score is "<< second <<endl;
         setcolorandbackground(9,0);
-        cout <<"####################################################################################################################";
+        cout <<" ####################################################################################################################";
         setcolorandbackground(6,0);
         cout << "\n\n\t\t\t\t\t";
         setcolorandbackground(1,15);
-        cout << "RESULT";
+        cout << "~~~~~~~ RESULT ~~~~~~~";
         if(first>second)
         {
             setcolorandbackground(10,0);
@@ -357,13 +357,13 @@ void start_game(string player_name)
         }
         else if(first == second)
         {
-            setcolorandbackground(2,0);
+            setcolorandbackground(4,15);
             cout << "\n\n\t\t\t\t Match Draw!!";
         }
         else
         {
             setcolorandbackground(4,0);
-            cout << "\n\n\t\t\t\t"<<player_name<<"  Lost the Match!!";
+            cout << "\n\n\t\t\t\t"<<player_name<<",  Lost the Match!!";
             setcolorandbackground(10,0);
             cout << "\n\n\t\t\t\t  Better Luck Next Time   ";
         }
