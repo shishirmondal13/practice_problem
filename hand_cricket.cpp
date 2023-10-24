@@ -4,7 +4,7 @@
 #include<windows.h>
 using namespace std;
 
-void setcolorandbackground(int textc,int backg)           //with this we can set text color and background color
+void setcolorandbackground(int textc,int backg)            //with this we can set text color and background color
 {
     WORD color = ((backg & 0x0F)<<4) + (textc & 0x0F);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),color);
@@ -131,7 +131,7 @@ int player()    //asks player to enter his score/choice
     return res;
 }
 
-int comp()  //generates random number between 1 and 6
+int comp()         //generates random number between 1 and 6
 {
     int res;
     res = rand()%6+1;
@@ -156,7 +156,7 @@ void start_game(string player_name)
     setcolorandbackground(11,0);
     cout << "\n\tWhich format would you like to play?\n\t1. 1 Over Match\n\t2. 2 Over Match\n\t3. 5 Over Match\n\n\t\tEnter your choice: ";
     cin>>overs;
-    while(1)    //calculate total number of balls in an innings based on match format
+    while(1)            //calculate total number of balls in an innings based on match format
     {
         if(overs==1)
         {
@@ -181,7 +181,7 @@ void start_game(string player_name)
         }
     }
     bool tossres = toss(player_name),out=false;
-    if(tossres)     //based on toss result player gets to choose his choice
+    if(tossres)                                        //based on toss result player gets to choose his choice
     {
         setcolorandbackground(11,0);
         cout << "\n\tSelect your choice:\n\t1.Batting\t\t2.Bowling\n\t";
@@ -238,7 +238,7 @@ void start_game(string player_name)
         }
         b++;
     }
-    //Before second innings need to change bat and bowl
+                         //Before second innings need to change bat and bowl
     if(bat=="player")
     {
         bat = "comp";
