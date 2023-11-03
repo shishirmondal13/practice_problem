@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main()
+
 {
     string name;
     int age;
@@ -8,6 +9,7 @@ int main()
     ofstream file;
     file.open("student_details.txt",ios::out|ios::app);
     for (int i=0; i<3; i++)
+        
     {
 
         cout << "Enter your name :" ;
@@ -20,7 +22,8 @@ int main()
         file <<"Age:"<< age << endl;
         cin.ignore();
     }
-
+    
     file.close();
-    return 0;
+    return 0; 
+    
 }
