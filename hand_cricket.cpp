@@ -4,9 +4,9 @@
 #include<windows.h>
 using namespace std;
 
-void setcolorandbackground(int textc,int backg)            //with this we can set text color and background color
+void setcolorandbackground(int textc,int backg)             //with this we can set text color and background color
 {
-    WORD color = ((backg & 0x0F)<<4) + (textc & 0x0F);
+    WORD color = (( backg & 0x0F )<<4) + ( textc & 0x0F );
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),color);
 }
 
@@ -69,10 +69,10 @@ void about_us()
     cout << "\n\tTeam Members Name     --------------------------      Member's Title ";
     setcolorandbackground(3,0);
     cout << "\n";
-    cout << "\n\t1.Sudipto Mandal    ----------------------------     Game Producer"<<endl;
+    cout << "\n\t1.Sudipto Mandal     ----------------------------     Game Producer"<<endl;
     cout << "\n\t2.Amina Islam Katha   -----------------------------  Narrative Writer"<<endl;
-    cout << "\n\t3.Shishir Mondal     ------------------------------  Game Designer and coder"<<endl;
-    cout << "\n\t4.Mehedi Hasan Ratul  ---------------------------    Idea manager and editor"<<endl;
+    cout << "\n\t3.Shishir Mondal      -----------------------------  Game Designer and coder"<<endl;
+    cout << "\n\t4.Mehedi Hasan Ratul  ----------------------------   Idea manager and editor"<<endl;
     cout << "\n\t5.Md Arif Hossain      ---------------------------   Game Tester"<<endl;
 
     setcolorandbackground(15,0);
