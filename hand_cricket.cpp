@@ -2,8 +2,10 @@
 #include<time.h>
 #include<string.h>
 #include<windows.h>
+#include <map>
 using namespace std;
 
+// Your existing code here...
 void setcolorandbackground(int textc,int backg)             //with this we can set text color and background color
 {
     WORD color = (( backg & 0x0F )<<4) + ( textc & 0x0F );
@@ -375,8 +377,145 @@ void start_game(string player_name)
     setcolorandbackground(15,0);
 }
 
-int main()
-{
+
+std::map<std::string, std::string> users; // Map to store usernames and passwords
+
+bool registerUser() {
+    std::string newUsername, newPassword, confirmPass;
+    std::cout << "\t Enter a new username: ";
+    std::cin >> newUsername;
+
+    if (users.find(newUsername) != users.end()) {
+        std::cout << "\t Username already exists. Please choose a different one." << std::endl;
+        return false;
+    }
+
+    std::cout << "\t Enter a new password: ";
+    std::cin >> newPassword;
+    std::cout << "\t Confirm your password: ";
+    std::cin >> confirmPass;
+
+    if (newPassword != confirmPass) {
+        std::cout << "\t Passwords do not match. Please try again." << std::endl;
+        Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+        return false;
+    }
+
+    users[newUsername] = newPassword;
+
+    std::cout << "\t Registration successful! You can now log in." << std::endl;
+    Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+    return true;
+}
+
+bool login() {
+    std::string username, password;
+    std::cout << "\t Enter your username: ";
+    std::cin >> username;
+
+    if (users.find(username) == users.end()) {
+        std::cout << "\t Username not found. Please register or try again." << std::endl;
+         Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+        return false;
+    }
+
+    std::cout << "\t Enter your password: ";
+    std::cin >> password;
+
+    if (users[username] != password) {
+        std::cout << "\t Incorrect password. Please try again." << std::endl;
+         Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+        return false;
+    }
+
+    std::cout << "\t Login successful! Welcome, " << username << "!" << std::endl;
+    Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+    return true;
+}
+
+// Function for the login page
+bool resetPassword() {
+    std::string username, newPassword, confirmPass;
+    std::cout << "\t Enter your username: ";
+    std::cin >> username;
+
+    if (users.find(username) == users.end()) {
+        std::cout << "\t Username not found. Please register or try again." << std::endl;
+           Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+           return false;
+    }
+
+    std::cout << "\t Enter a new password: ";
+    std::cin >> newPassword;
+    std::cout << "\t Confirm your new password: ";
+    std::cin >> confirmPass;
+
+    if (newPassword != confirmPass) {
+        std::cout << "\t Passwords do not match. Please try again." << std::endl;
+           Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+        return false;
+    }
+
+    users[username] = newPassword;
+
+    std::cout << "\t Password reset successful! You can now log in with your new password." << std::endl;
+       Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+    return true;
+}
+void loginPage() {
+    bool isLoggedIn = false;
+
+    while (!isLoggedIn) {
+        system("CLS"); // Clears the screen
+        std::cout << "\n\n\t\t\tLOGIN PAGE\n\n";
+        std::cout << "\t 1. Login\n";
+        std::cout << "\t 2. Forgot Password\n";
+        std::cout << "\t Enter your choice: ";
+
+        int loginChoice;
+        std::cin >> loginChoice;
+
+        switch (loginChoice) {
+            case 1:
+                isLoggedIn = login(); // Call the login function
+                break;
+            case 2:
+                resetPassword(); // Call the password reset function
+                break;
+            default:
+                std::cout << "\t Invalid choice. Please try again." << std::endl;
+                Sleep(60000); // Pause for 1 minute (60000 milliseconds)
+                break;
+        }
+    }
+
+    std::cout << "\n\n\t\tRedirecting to Main Menu...\n\n";
+}
+
+
+int main() {
+    // ... (existing code)
+
+    title(); // Display the game name before registration and login
+
+    bool isRegistered = false;
+
+    while (!isRegistered) {
+        cout << "\t Are you a new user? Would you like to register? (Y/N): ";
+        char regChoice;
+        cin >> regChoice;
+
+        if (regChoice == 'Y' || regChoice == 'y') {
+            isRegistered = registerUser();
+        } else {
+            isRegistered = true;
+        }
+    }
+
+    // Show the login page
+    loginPage();
+
+    // ... (existing game menu loop)
     while(1)
     {
         title();
